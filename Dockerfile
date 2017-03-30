@@ -35,7 +35,17 @@ RUN make init
 
 # fix some permissions
 RUN mkdir -p /.npm && chmod -R 777 /.npm && \
-	chmod -R 777 localstack/infra/elasticsearch/data
+	mkdir -p \
+      localstack/infra/elasticsearch/data \
+      localstack/infra/elasticsearch/logs \
+      localstack/infra/elasticsearch/plugins \
+      localstack/infra/elasticsearch/config/scripts \
+      && \
+	chmod -R 777 \
+      localstack/infra/elasticsearch/data \
+      localstack/infra/elasticsearch/logs \
+      localstack/infra/elasticsearch/plugins \
+      localstack/infra/elasticsearch/config/scripts
 
 # assign random user id
 USER 24624336
