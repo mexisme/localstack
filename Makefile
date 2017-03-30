@@ -54,6 +54,9 @@ docker-push:       ## Push Docker image to registry
 docker-run:        ## Run Docker image locally
 	docker run -it -p 4567-4577:4567-4577 $(IMAGE_NAME)
 
+docker-run-bash:   ## Run Docker image locally, drop straight into shell (for diags)
+	docker run -it -p 4567-4577:4567-4577 --entrypoint /bin/bash $(IMAGE_NAME)
+
 web:               ## Start web application (dashboard)
 	($(VENV_RUN); bin/localstack web --port=8081)
 
